@@ -1,5 +1,3 @@
-# Example of monkey patch
-
 module OnlySpace
   ONLY_SPACE_UNICODE_RE = %r/\A[[:space:]]*\z/
 
@@ -9,5 +7,10 @@ module OnlySpace
     else
       ONLY_SPACE_UNICODE_RE === str
     end
+  end
+
+  def only_space?
+    # モジュール関数に転送
+    OnlySpace.only_space?(self)
   end
 end
